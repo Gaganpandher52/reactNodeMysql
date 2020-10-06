@@ -1,21 +1,21 @@
 module.exports = app => {
-  const user = require("../controllers/signUp.controller.js");
+  const users = require("../controllers/signUp.controller.js");
 
   // Create a new user
-  app.post("/user", user.create);
+  app.post("/users", users.create);
 
   // Retrieve all user
-  app.get("/user", user.findAll);
+  app.get("/users", users.findAll);
 
   // Retrieve a single user with user
-  app.get("/user/:user", user.findOne);
+  app.get("/users/:userId", users.findOne);
 
   // Update a user with user
-  app.put("/user/:user", user.update);
+  app.put("/users/:userId", users.update);
 
   // Delete a user with user
-  app.delete("/user/:user", user.delete);
+  app.delete("/users/:userId", users.delete);
 
   // Create a new user
-  app.delete("/user", user.deleteAll);
+  app.delete("/users", users.deleteAll);
 };

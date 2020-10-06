@@ -1,11 +1,11 @@
 const sql = require("./db.js");
 
-const user = function(user) {
+const User = function(user) {
   this.email = user.email;
   this.name = user.name;
 };
 
-user.create = (newUser, result) => {
+User.create = (newUser, result) => {
   sql.query("INSERT INTO customers SET ?", newUser, (err, res) => {
     if (err) {
       console.log("error: ", err);
@@ -18,7 +18,7 @@ user.create = (newUser, result) => {
   });
 };
 
-user.findById = (userId, result) => {
+User.findById = (userId, result) => {
   sql.query(`SELECT * FROM users WHERE id = ${userId}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
@@ -37,7 +37,7 @@ user.findById = (userId, result) => {
   });
 };
 
-user.getAll = result => {
+User.getAll = result => {
   sql.query("SELECT * FROM users", (err, res) => {
     if (err) {
       console.log("error: ", err);
@@ -50,7 +50,7 @@ user.getAll = result => {
   });
 };
 
-user.updateById = (id, user, result) => {
+User.updateById = (id, user, result) => {
   sql.query(
     "UPDATE users SET email = ?, name = ?, active = ? WHERE id = ?",
     [user.email, user.name, user.active, id],
@@ -73,7 +73,7 @@ user.updateById = (id, user, result) => {
   );
 };
 
-user.remove = (id, result) => {
+User.remove = (id, result) => {
   sql.query("DELETE FROM users WHERE id = ?", id, (err, res) => {
     if (err) {
       console.log("error: ", err);
@@ -92,7 +92,7 @@ user.remove = (id, result) => {
   });
 };
 
-user.removeAll = result => {
+User.removeAll = result => {
   sql.query("DELETE FROM users", (err, res) => {
     if (err) {
       console.log("error: ", err);
@@ -105,4 +105,4 @@ user.removeAll = result => {
   });
 };
 
-module.exports = user;
+module.exports = User;
