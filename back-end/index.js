@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
+require("./routes/signUp.routes.js")(app);
+
 // parse requests of content-type: application/json
 app.use(bodyParser.json());
 
