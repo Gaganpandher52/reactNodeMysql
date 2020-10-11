@@ -13,7 +13,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to the application." });
 });
-
 require("../back-end/routes/signUp.routes.js")(app);
 
 // set port, listen for requests
